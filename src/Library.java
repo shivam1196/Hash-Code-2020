@@ -3,6 +3,15 @@ class Library{
     private int signUpDays;
     private int booksDispatchedPerDay;
     private long calculatedScore;
+    private List<Integers> scoreOfEachBook=new ArrayList<>();
+
+    public List<Integers> getScoreOfEachBook() {
+        return scoreOfEachBook;
+    }
+
+    public void setScoreOfEachBook(List<Integers> scoreOfEachBook) {
+        this.scoreOfEachBook = scoreOfEachBook;
+    }
 
     public int getNoOfBooks() {
         return noOfBooks;

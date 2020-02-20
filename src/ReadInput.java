@@ -15,12 +15,14 @@ public class ReadInput{
         int noOfLibraries=0;
         int totalDays=0;
         List<Long> allBooksScore=new ArrayList<>();
+        List<Library> allLibrary=new ArrayList<>();
+        Library library=new Library();
         try {
             File myObj = new File("input.txt");  
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
             String data = myReader.nextLine();
-            String arr[]=data.split(" ");
+            String[] arr =data.split(" ");
             if(isFirst){
                 isFirst=false;
                 isSecond=true;
@@ -38,8 +40,24 @@ public class ReadInput{
                 isSecond =false;
                 isThird=true;
             }
+
             else if(isThird){
-                Library library=new Library();
+                isThird=false;
+                isFourth=true;
+                library=new Library();
+                library.setNoOfBooks(Integer.parseInt(arr[0]));
+                library.setSignUpDays(Integer.parseInt(arr[1]));
+                library.setBooksDispatchedPerDay(Integer.parseInt(arr[2]));
+            }
+            else if(isFourth){
+                isFourth=false;
+                isThird=true;
+                List<Long> bookScores=new ArrayList<>();
+                for (String string : arr) {
+                    bookScores.add(allBooksScore.get(Integer.parseInt(string)));
+                }
+                library.setScoreOfEachBook(bookScores);
+                allLibrary.add(library);
             }
             
             }

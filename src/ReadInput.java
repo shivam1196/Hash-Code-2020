@@ -1,3 +1,5 @@
+import com.cheetah.hashcode.MaxCalculation;
+import com.cheetah.hashcode.processing.Processing;
 import java.io.File;
 import java.io.IOException;
 import java.io.File; 
@@ -16,7 +18,9 @@ public class ReadInput{
         int totalDays=0;
         List<Long> allBooksScore=new ArrayList<>();
         List<Library> allLibrary=new ArrayList<>();
+        HashSet<Long> uniqueIdHashSet = new HashSet<>();
         Library library=new Library();
+        List<Library> processedLibraries;
         try {
             File myObj = new File("input.txt");  
             Scanner myReader = new Scanner(myObj);
@@ -36,6 +40,7 @@ public class ReadInput{
             else if(isSecond){
                 for (String string : arr) {
                     allBooksScore.add(Long.parseLong(string));
+                    //uniqueIdHashSet.add(Long.parseLong(string));
                 }
                 isSecond =false;
                 isThird=true;
@@ -62,6 +67,10 @@ public class ReadInput{
             
             }
             myReader.close();
+            Processing dataProcessing = new Processing(allLibrary,totalDays,uniqueIdHashSet);
+             processedLibraries= dataProcessing.returnProcessedData();
+            MaxCalculation maxCalculation = new MaxCalculation();
+            maxCalculation.maxCalculatedScore(processedLibraries,uniqueIdHashSet,totalDays);
             } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();

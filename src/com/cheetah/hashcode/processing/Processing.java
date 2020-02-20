@@ -45,9 +45,9 @@ public class Processing {
       }
 
       for ( int  i =0 ; i< numberOfIteration ;i++){
-        if(uniqueBookIds.contains(eachBookScore.get(i))){
+        if(!uniqueBookIds.contains(eachBookScore.get(i))){
           totalCalculatedScore = totalCalculatedScore + eachBookScore.get(i);
-          uniqueBookIds.remove(eachBookScore.get(i));
+
         }
       }
       library.setCalculatedScore(totalCalculatedScore);

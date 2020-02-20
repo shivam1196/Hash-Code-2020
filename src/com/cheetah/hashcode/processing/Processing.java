@@ -2,15 +2,19 @@ package com.cheetah.hashcode.processing;
 
 import com.cheetah.hashcode.Library;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
 public class Processing {
 
   private List<Library> listOfLibraries = new ArrayList<>();
   private long numberOfDays = 0;
-  public Processing(List<Library> listOfLibraries,long numberOfDays){
+  private HashSet<Long> uniqueBookIds = new HashSet<>();
+  public Processing(List<Library> listOfLibraries,long numberOfDays,HashSet<Long> uniqueBookIds){
     this.listOfLibraries = listOfLibraries;
     this.numberOfDays = numberOfDays;
+    this.uniqueBookIds = uniqueBookIds;
   }
 
 
@@ -29,8 +33,24 @@ public class Processing {
 
   private Library calculateScore(Library library){
       long numberOfEligibleWorkDays = this.numberOfDays - library.getSignUpDays();
-      long totalWorkUnitsDone = numberOfEligibleWorkDays * library.getBooksDispatchedPerDay();
-      library.setCalculatedScore(totalWorkUnitsDone);
+      long totalWorkUnits = numberOfEligibleWorkDays * library.getBooksDispatchedPerDay();
+      long totalCalculatedScore = 0;
+      List<Long> eachBookScore = library.getScoreOfEachBook();
+      eachBookScore.sort(Collections.reverseOrder());
+      long numberOfIteration = 0;
+      if(totalWorkUnits > eachBookScore.size()){
+          numberOfIteration = eachBookScore.size();
+      }else{
+        numberOfIteration = totalWorkUnits;
+      }
+
+      for ( int  i =0 ; i< numberOfIteration ;i++){
+        if(uniqueBookIds.contains(eachBookScore.get(i))){
+          totalCalculatedScore = totalCalculatedScore + eachBookScore.get(i);
+          uniqueBookIds.remove(eachBookScore.get(i));
+        }
+      }
+      library.setCalculatedScore(totalCalculatedScore);
       return library;
   }
 

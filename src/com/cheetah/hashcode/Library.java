@@ -1,4 +1,6 @@
-class Library{
+package com.cheetah.hashcode;
+
+public class Library{
     private int noOfBooks;
     private int signUpDays;
     private int booksDispatchedPerDay;

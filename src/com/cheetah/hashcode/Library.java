@@ -8,13 +8,13 @@ public class Library{
     private int signUpDays;
     private int booksDispatchedPerDay;
     private long calculatedScore;
-    private List<Integer> scoreOfEachBook=new ArrayList<>();
+    private List<Long> scoreOfEachBook=new ArrayList<Long>();
 
-    public List<Integer> getScoreOfEachBook() {
+    public List<Long> getScoreOfEachBook() {
         return scoreOfEachBook;
     }
 
-    public void setScoreOfEachBook(List<Integer> scoreOfEachBook) {
+    public void setScoreOfEachBook(List<Long> scoreOfEachBook) {
         this.scoreOfEachBook = scoreOfEachBook;
     }
 

@@ -1,17 +1,20 @@
 package com.cheetah.hashcode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Library{
     private int noOfBooks;
     private int signUpDays;
     private int booksDispatchedPerDay;
     private long calculatedScore;
-    private List<Integers> scoreOfEachBook=new ArrayList<>();
+    private List<Integer> scoreOfEachBook=new ArrayList<>();
 
-    public List<Integers> getScoreOfEachBook() {
+    public List<Integer> getScoreOfEachBook() {
         return scoreOfEachBook;
     }
 
-    public void setScoreOfEachBook(List<Integers> scoreOfEachBook) {
+    public void setScoreOfEachBook(List<Integer> scoreOfEachBook) {
         this.scoreOfEachBook = scoreOfEachBook;
     }
 

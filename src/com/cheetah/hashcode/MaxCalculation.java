@@ -5,13 +5,18 @@ import java.util.Collections;
 import java.util.List;
 
 public class MaxCalculation {
-	List<Long> mainList = new ArrayList<Long>();
+	List<Library> mainList = new ArrayList<Library>();
 	
-	public List<Long> maxCalculatedScore(List<Long> calculatedList){
+	public List<Library> maxCalculatedScore(List<Library> calculatedList){
 		if(calculatedList.size() == 0) {
 			return mainList;
 		}
-		long max = Collections.max(calculatedList);
+		Library max = new Library();
+		for(int i = 0; i<calculatedList.size(); i++) {
+			if(calculatedList.get(i).getCalculatedScore() > max.getCalculatedScore()) {
+				max = calculatedList.get(i);
+			}
+		}
 		int indexOfMax = calculatedList.indexOf(max);
 		mainList.add(max);
 		calculatedList.remove(indexOfMax);

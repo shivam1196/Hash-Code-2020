@@ -15,6 +15,9 @@ public class MaxCalculation {
     while (calculatedList.size() > 0) {
       Library maxLibrary = getMaxLibrary(calculatedList);
       hashSet.addAll(maxLibrary.getBooks().stream().map(Book::getId).collect(Collectors.toCollection(HashSet::new)));
+      if(maxLibrary.getCalculatedScore() ==0){
+        return;
+      }
       mainList.add(maxLibrary);
       calculatedList.remove(maxLibrary);
       Processing processing = new Processing(calculatedList, totalDays-maxLibrary.getSignUpDays(),hashSet);
@@ -38,12 +41,7 @@ public class MaxCalculation {
 
   public void writeTofile(){
     try {
-      for(Library library:mainList){
-        if(library.getLibraryId()==18){
-          System.out.println();
-        }
-      }
-      FileWriter file = new FileWriter("result_c.txt", true);
+      FileWriter file = new FileWriter("result_f.txt", true);
       file.write(mainList.size() + " \n");
       for (int i = 0; i < mainList.size(); i++) {
         file.write(mainList.get(i).getLibraryId()+" "+mainList.get(i).getBooks().size() + "\n");

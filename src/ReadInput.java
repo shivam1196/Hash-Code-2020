@@ -22,7 +22,7 @@ public class ReadInput{
         Library library=new Library();
         List<Library> processedLibraries;
         try {
-            File myObj = new File("b_read_on.txt");
+            File myObj = new File("c_incunabula.txt");
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
             String data = myReader.nextLine();

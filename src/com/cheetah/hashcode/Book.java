@@ -2,7 +2,7 @@ package com.cheetah.hashcode;
 
 public class Book {
   int id;
-  int score;
+  long score;
 
   public int getId() {
     return id;
@@ -12,11 +12,11 @@ public class Book {
     this.id = id;
   }
 
-  public int getScore() {
+  public long getScore() {
     return score;
   }
 
-  public void setScore(int score) {
+  public void setScore(long score) {
     this.score = score;
   }
 }
